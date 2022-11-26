@@ -9,13 +9,13 @@ loaded_model = pickle.load(open('trained_model.sav', 'rb'))
 
 # creating a function for Prediction
 
-def diabetes_prediction(input_data):
+def heartDiseasePrediction(input_data):
     
 
-    # changing the input_data to numpy array
-    input_data_as_numpy_array = np.asarray(input_data)
+    # change the input data to a numpy array
+    input_data_as_numpy_array= np.asarray(input_data)
 
-    # reshape the array as we are predicting for one instance
+    # reshape the numpy array as we are predicting for only on instance
     input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
 
     prediction = loaded_model.predict(input_data_reshaped)
@@ -38,18 +38,18 @@ def main():
     # getting the input data from the user
     
     
-    Age = st.text_input('Age of the Person')
-    Sex = st.text_input('Sex of the Person')
-    CP = st.text_input('Chest Pain Type (CP)')
-    Trestbps = st.text_input('Resting Blood Pressure (trestbps)')
+    Age = st.text_input('Age of Person')
+    Sex = st.text_input('Sex of Person (1 = Male, 0 = Female)')
+    CP = st.text_input('Chest Pain Type')
+    Trestbps = st.text_input('Resting Blood Pressure')
     Chol = st.text_input('Serum Cholestoral in mg/dl')
-    Fbs = st.text_input('Fasting Blood Sugar (fbs)')
-    Restecg = st.text_input('Resting Electrocardiographic Results (restecg)')
-    Thalach = st.text_input('Maximum Heart Rate Achieved (thalach)')
-    Exang = st.text_input('Exercise Induced Angina (exang)')
+    Fbs = st.text_input('Fasting Blood Sugar')
+    Restecg = st.text_input('Resting Electrocardiographic Results')
+    Thalach = st.text_input('Maximum Heart Rate Achieved')
+    Exang = st.text_input('Exercise Induced Angina')
     Oldpeak = st.text_input('Oldpeak')
-    ST_Slope = st.text_input('ST Slope (The slope of the peak exercise ST segment)')
-    CA = st.text_input('Number of major vessels (0-3) colored by flourosopy')
+    Slope = st.text_input('ST Slope')
+    CA = st.text_input('CA (Number of major vessels (0-3) colored by flourosopy)')
     Thal = st.text_input('Thal')
     
     
@@ -60,7 +60,7 @@ def main():
     
     try:
         if st.button('Test Result'):
-          diagnosis = diabetes_prediction([Age,Sex,CP,Trestbps,Chol,Fbs,Restecg,Thalach,Exang,Oldpeak,ST_Slope,CA,Thal])
+          diagnosis = heartDiseasePrediction([Age,Sex,CP,Trestbps,Chol,Fbs,Restecg,Thalach,Exang,Oldpeak,Slope,CA,Thal])
         
         
         st.success(diagnosis)
