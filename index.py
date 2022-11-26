@@ -42,7 +42,7 @@ def main():
     Sex = st.text_input('Sex of Person (1 = Male, 0 = Female)')
     CP = st.text_input('Chest Pain Type')
     Trestbps = st.text_input('Resting Blood Pressure')
-    Chol = st.text_input('Serum Cholestoral in mg/dl')
+    Chol = st.text_input('Serum Cholesterol in mg/dl')
     Fbs = st.text_input('Fasting Blood Sugar')
     Restecg = st.text_input('Resting Electrocardiographic Results')
     Thalach = st.text_input('Maximum Heart Rate Achieved')
